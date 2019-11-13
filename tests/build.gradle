@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        maven { url "http://jars.interlis.ch" }
+        maven { url "http://download.osgeo.org/webdav/geotools/" }
+    }
+}
+
+plugins {
+    id "ch.so.agi.gretl" version "2.0.153"
+}
+
+import ch.so.agi.gretl.tasks.*
+import ch.so.agi.gretl.api.TransferSet
+
+
+defaultTasks 'systemTest', 'importTest', 'readTest'
+
+
+task systemTest(type: SqlExecutor) {
+    database = [dbUri, dbUserRead, dbPwdRead]
+    sqlFiles = [
+        'systemTest.sql'
+    ]
+
+    doLast {
+        //Thread.sleep(1000*60*20)
+    }
+}
+
+task importTest(dependsOn: ['importData']) {
+    doLast {
+        println "Data import tests finished"
+    }
+}
+
+task importData(type: Ili2pgReplace) {
+    database = [dbUri, dbUserWrite, dbPwdWrite]
+    dbschema = 'agi_dm01avso24'
+    dataFile = '254900.itf'
+    dataset = 2549
+}
+
+
+task readTest(type: SqlExecutor) {
+    database = [dbUri, dbUserRead, dbPwdRead]
+    sqlFiles = [
+        'readTest.sql'
+    ]
+}
