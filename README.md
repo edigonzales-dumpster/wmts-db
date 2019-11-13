@@ -1,4 +1,7 @@
 # wmts-db
+[![Build Status](https://travis-ci.org/edigonzales/wmts-db.svg?branch=master)](https://travis-ci.org/edigonzales/wmts-db)
+[![Docker Pulls](https://img.shields.io/docker/pulls/sogis/wmts-db.svg)](https://hub.docker.com/r/sogis/wmts-db)
+
 
 Docker image providing a PostGIS database for sogis WMTS.
 
@@ -69,5 +72,11 @@ Run `ILI2PG_PATH=/Users/stefan/apps/ili2pg-4.3.2/ili2pg-4.3.2.jar ./create_schem
 
 ## Commands for importing data manually (example)
 
-
-
+```
+curl -O https://geoweb.so.ch/av_datenabgabe/av_daten/itf_so/254900.zip
+unzip 254900.zip 254900/254900.itf
+ILI2PG_PATH=/Users/stefan/apps/ili2pg-4.3.2/ili2pg-4.3.2.jar && java -jar $ILI2PG_PATH \
+--dbhost localhost --dbport 54321 --dbdatabase oereb --dbusr gretl --dbpwd gretl \
+--dbschema agi_dm01avso24 --models DM01AVSO24LV95 \
+--dataset 2549 --import 254900/254900.itf
+```
