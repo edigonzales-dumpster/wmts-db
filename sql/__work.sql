@@ -28,3 +28,18 @@ FROM
     RIGHT JOIN agi_dm01avso24.einzelobjekte_linienelement AS linienelement
     ON linienelement.linienelement_von = einzelobjekt.t_id
 ;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_einzelobjekte_punktelement
+AS 
+SELECT
+    punktelement.t_id, 
+    einzelobjekt.qualitaet,
+    einzelobjekt.art,
+    einzelobjekt.entstehung,
+    punktelement.geometrie
+FROM
+    agi_dm01avso24.einzelobjekte_einzelobjekt AS einzelobjekt
+    RIGHT JOIN agi_dm01avso24.einzelobjekte_punktelement AS punktelement
+    ON punktelement.punktelement_von = einzelobjekt.t_id
+;
