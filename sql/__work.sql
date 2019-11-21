@@ -160,7 +160,8 @@ SELECT
     pos.vali,
     pos.ori,
     pos.pos,
-    eingang.hausnummer
+    eingang.hausnummer,
+    eingang.astatus
 FROM
     agi_dm01avso24.gebaeudeadressen_gebaeudeeingang AS eingang
     RIGHT JOIN agi_dm01avso24.gebaeudeadressen_hausnummerpos AS pos
