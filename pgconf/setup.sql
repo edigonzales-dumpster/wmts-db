@@ -2420,7 +2420,7 @@ CREATE TABLE agi_dm01avso24.T_ILI2DB_MODEL (
   ,modelName text NOT NULL
   ,content text NOT NULL
   ,importDate timestamp NOT NULL
-  ,PRIMARY KEY (modelName,iliversion)
+  ,PRIMARY KEY (iliversion,modelName)
 )
 ;
 CREATE TABLE agi_dm01avso24.T_ILI2DB_CLASSNAME (
@@ -2815,7 +2815,7 @@ CREATE UNIQUE INDEX T_ILI2DB_DATASET_datasetName_key ON agi_dm01avso24.T_ILI2DB_
 ;
 ALTER TABLE agi_dm01avso24.T_ILI2DB_IMPORT_BASKET ADD CONSTRAINT T_ILI2DB_IMPORT_BASKET_importrun_fkey FOREIGN KEY ( importrun ) REFERENCES agi_dm01avso24.T_ILI2DB_IMPORT DEFERRABLE INITIALLY DEFERRED;
 ALTER TABLE agi_dm01avso24.T_ILI2DB_IMPORT_BASKET ADD CONSTRAINT T_ILI2DB_IMPORT_BASKET_basket_fkey FOREIGN KEY ( basket ) REFERENCES agi_dm01avso24.T_ILI2DB_BASKET DEFERRABLE INITIALLY DEFERRED;
-CREATE UNIQUE INDEX T_ILI2DB_MODEL_modelName_iliversion_key ON agi_dm01avso24.T_ILI2DB_MODEL (modelName,iliversion)
+CREATE UNIQUE INDEX T_ILI2DB_MODEL_iliversion_modelName_key ON agi_dm01avso24.T_ILI2DB_MODEL (iliversion,modelName)
 ;
 CREATE UNIQUE INDEX T_ILI2DB_ATTRNAME_ColOwner_SqlName_key ON agi_dm01avso24.T_ILI2DB_ATTRNAME (ColOwner,SqlName)
 ;
@@ -4040,260 +4040,260 @@ INSERT INTO agi_dm01avso24.T_ILI2DB_TRAFO (iliname,tag,setting) VALUES ('DM01AVS
 INSERT INTO agi_dm01avso24.T_ILI2DB_TRAFO (iliname,tag,setting) VALUES ('DM01AVSO24LV95.Liegenschaften.LineAttrib1','ch.ehi.ili2db.inheritance','newClass');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TRAFO (iliname,tag,setting) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeeingangEntstehung','ch.ehi.ili2db.inheritance','embedded');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TRAFO (iliname,tag,setting) VALUES ('DM01AVSO24LV95.Liegenschaften.LineAttrib2','ch.ehi.ili2db.inheritance','newClass');
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BoFlaecheEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.GebaeudenummerPosGebaeudenummerPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeNamePosGebaeudeNamePos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjBergwerk',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.HausnummerPosHausnummerPos_von',NULL);
 INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsfixpunktSymbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.EinzelpunktPosEinzelpunktPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjBoFlaecheSymbolProjBoFlaecheSymbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.EinzelpunktPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjObjektname',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OSNachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.GebaeudenummerPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.FlurnamePos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.Gemeinde',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsFPNachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1Entstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsfixpunktPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.GemeindegrenzeGemeindegrenze_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnamePos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1Symbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.SignalpunktPosSignalpunktPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.PLZ6Nachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.OrtsnamePos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2SymbolLFP2Symbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanLayoutSymbolPlanLayoutSymbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2Nachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjGrundstueckPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanbeschriftungPosPlanbeschriftungPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.NummerierungsbereichPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.EONachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjGrundstueck',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.EinzelpunktEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.ProjGemeindegrenzeProjGemeindegrenze_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftOrtschaft_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanbeschriftungPlanbeschriftung_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3Nachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.NBGeometrieNBGeometrie_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeeingangGebaeudeeingang_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.FlaechenelementSymbolFlaechenelementSymbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3Symbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjGebaeudenummerPosProjGebaeudenummerPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.TSEinteilung.ToleranzstufePosToleranzstufePos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Objektnummer',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2Pos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.OrtsnameEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.SelbstRecht',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktSymbolHoheitsgrenzpunktSymbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjObjektnamePos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.LSNachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.Plan',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1SymbolLFP1Symbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjLiegenschaftProjLiegenschaft_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.Ortschaft',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanLayout',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.RLNachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ObjektnamePos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.LinienelementLinienelement_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2PosLFP2Pos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjBoFlaecheSymbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjObjektnameProjObjektname_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.LinienobjektLinienobjekt_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.LinienelementLinienelement_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.HoehenpunktPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.GelaendenamePosGelaendenamePos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktPosGrenzpunktPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Darstellungsflaeche',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsName',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.EinzelpunktPosEinzelpunktPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2Entstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsfixpunktPosHilfsfixpunktPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Einzelobjekt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.FlaechenelementFlaechenelement_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsVerbundTextOrtschaftsVerbundText_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2Symbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BBNachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.HoehenpunktPosHoehenpunktPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.Aussparung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenanschriftPosKoordinatenanschriftPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeNamePos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3SymbolLFP3Symbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeBeschreibung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Flaechenelement',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjBergwerkProjBergwerk_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanLayoutSymbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Linienelement',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.TSEinteilung.Toleranzstufe',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BoFlaeche',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.FlurnameEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.BenanntesGebiet',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjGebaeudenummerPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.FlurnamePosFlurnamePos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjLiegenschaft',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ObjektnameObjektname_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.LeitungsobjektEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.GelaendenamePos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.Hoheitsgrenzpunkt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnummerPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.SignalpunktEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.Grenzpunkt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Signalpunkt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.EinzelpunktEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1Nachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.FlaechenelementFlaechenelement_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.PlanPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsName_PosOrtschaftsName_Pos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrundstueckEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.BergwerkBergwerk_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Punktelement',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.PlanPosPlanPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.SignalpunktPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.LinienelementSymbolLinienelementSymbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.PunktelementPunktelement_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Koordinatenanschrift',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeBeschreibungGebaeudeBeschreibung_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.Lokalisation',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3Pos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsVerbundText',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.Einzelpunkt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.PunktelementPunktelement_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjSelbstRecht',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3Pos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ObjektnamePosObjektnamePos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjBoFlaeche',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.OrtsnamePosOrtsnamePos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.PLZ6PLZ6_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.NetzkreuzNetzkreuz_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrundstueckPosGrundstueckPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.FlaechenelementSymbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Linienelement',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrundstueckPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeeingangEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rutschgebiete.Rutschung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsfixpunktSymbolHilfsfixpunktSymbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Leitungsobjekt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.HoehenpunktEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsfixpunktEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Einzelpunkt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsNameOrtschaftsName_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.ProjGemeindegrenze',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rutschgebiete.RutschungPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenanschriftKoordinatenanschrift_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2PosHFP2Pos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.HONachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.PlangeometriePlangeometrie_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.LiegenschaftLiegenschaft_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.Hilfsfixpunkt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjSelbstRechtProjSelbstRecht_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsVerbund',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.GebaeudenummerGebaeudenummer_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.Grundstueck',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2Entstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.Flurname',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.GelaendekanteEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.TSEinteilung.ToleranzstufePos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rutschgebiete.RutschungPosRutschungPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.StrassenstueckStrassenstueck_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.Gebaeudenummer',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2Nachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeNameGebaeudeName_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1Pos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenLinieKoordinatenLinie_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.Strassenstueck',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.Bergwerk',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.HausnummerPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenLinie',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BoFlaecheSymbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Linienobjekt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BoFlaecheSymbolBoFlaecheSymbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1PosHFP1Pos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.GelaendenameEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanbeschriftungPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktSymbolGrenzpunktSymbol_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnummerObjektnummer_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Flaechenelement',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationsName',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Netzkreuz',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Landesgrenzen.Landesgrenzabschnitt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationsNameBenannte',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1Pos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.EinzelpunktPosEinzelpunktPos_von',NULL);
 INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjGrundstueckEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.PLZ6',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjGebaeudenummerProjGebaeudenummer_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3PosLFP3Pos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.EinzelpunktPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnameObjektname_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationsNamePos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.LeitungsobjektPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3Entstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.SelbstRechtSelbstRecht_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.DarstellungsflaecheDarstellungsflaeche_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjGebaeudenummer',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.BenanntesGebietBenanntesGebiet_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.Liegenschaft',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bezirksgrenzen.Bezirksgrenzabschnitt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenanschriftPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1Nachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.EinzelpunktPos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Objektname',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.PLZ6Entstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjBoFlaecheEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.Objektname',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Punktelement',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.Gelaendename',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3PosHFP3Pos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1Entstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.LeitungsobjektPosLeitungsobjektPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3Entstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.NummerierungsbereichPosNummerierungsbereichPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Planbeschriftung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Einzelpunkt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.NBGeometrie',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.AussparungEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.ProjGemeindegrenzeEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjGrundstueckPosProjGrundstueckPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsName_Pos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnummerPosObjektnummerPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.Nummerierungsbereich',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnamePosObjektnamePos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktPosHoheitsgrenzpunktPos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.Hoehenpunkt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.Plangeometrie',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationsNamePosLokalisationsNamePos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1PosLFP1Pos_von',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.Ortsname',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.GEMNachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3Nachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktSymbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Kantonsgrenzen.Kantonsgrenzabschnitt',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.EinzelpunktEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.LinienelementSymbol',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.Gelaendekante',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.Gebaeudeeingang',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3Symbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.HoehenpunktPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.LinienelementLinienelement_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.GelaendenamePos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.SignalpunktEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsName_PosOrtschaftsName_Pos_von',NULL);
 INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.GemeindegrenzeEntstehung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.NKNachfuehrung',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.Gemeindegrenze',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeName',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2Pos',NULL);
-INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktSymbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanLayoutSymbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.StrassenstueckStrassenstueck_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.PlanPosPlanPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.PLZ6PLZ6_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjBergwerkProjBergwerk_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenanschriftPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3Pos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Linienobjekt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.Strassenstueck',NULL);
 INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.EinzelobjektEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.DarstellungsflaecheDarstellungsflaeche_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.EONachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1Pos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.LinienelementLinienelement_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3PosLFP3Pos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Leitungsobjekt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjBoFlaecheEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenLinie',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.FlurnamePos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeNamePos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeBeschreibungGebaeudeBeschreibung_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrundstueckPosGrundstueckPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktSymbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.NummerierungsbereichPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.Plan',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.EinzelpunktPosEinzelpunktPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjGebaeudenummerProjGebaeudenummer_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.Ortsname',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ObjektnamePosObjektnamePos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rutschgebiete.RutschungPosRutschungPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktSymbolHoheitsgrenzpunktSymbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.Hoehenpunkt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.Grundstueck',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.EinzelpunktEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.PLZ6Entstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsName',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ObjektnameObjektname_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.NBGeometrieNBGeometrie_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.AussparungEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjBoFlaeche',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.GelaendenamePosGelaendenamePos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktSymbolGrenzpunktSymbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.FlaechenelementFlaechenelement_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Darstellungsflaeche',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnamePosObjektnamePos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsNameOrtschaftsName_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktPosHoheitsgrenzpunktPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ObjektnamePos',NULL);
 INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GEBNachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.Hoheitsgrenzpunkt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2SymbolLFP2Symbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3Entstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeeingangEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.GelaendenameEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.Gemeindegrenze',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.Liegenschaft',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2PosHFP2Pos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjGebaeudenummerPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2Entstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjObjektname',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1Entstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.ProjGemeindegrenzeProjGemeindegrenze_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.BenanntesGebietBenanntesGebiet_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.SignalpunktPosSignalpunktPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjBergwerk',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Objektname',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.PunktelementPunktelement_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2Pos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2Entstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.Gelaendekante',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.Grenzpunkt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsfixpunktPosHilfsfixpunktPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationsNamePos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.Plangeometrie',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2Nachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.ProjGemeindegrenze',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.EinzelpunktPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.Ortschaft',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeName',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjGebaeudenummerPosProjGebaeudenummerPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.EinzelpunktPosEinzelpunktPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Einzelobjekt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1Symbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnummerObjektnummer_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.LeitungsobjektPosLeitungsobjektPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktPosGrenzpunktPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Signalpunkt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rutschgebiete.Rutschung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Linienelement',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BoFlaeche',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.EinzelpunktEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Einzelpunkt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2PosLFP2Pos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rutschgebiete.RutschungPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktSymbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeeingangGebaeudeeingang_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftOrtschaft_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.Gebaeudenummer',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjObjektnameProjObjektname_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjSelbstRecht',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.FlaechenelementSymbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3Nachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjBoFlaecheSymbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanbeschriftungPosPlanbeschriftungPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1SymbolLFP1Symbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.TSEinteilung.ToleranzstufePos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.HausnummerPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjGebaeudenummer',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrundstueckPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BoFlaecheEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjLiegenschaft',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.HausnummerPosHausnummerPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnummerPosObjektnummerPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Planbeschriftung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Koordinatenanschrift',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.Netzkreuz',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Punktelement',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.FlurnameEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjObjektnamePos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnameObjektname_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeBeschreibung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.OrtsnameEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsVerbundText',NULL);
 INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjObjektnamePosProjObjektnamePos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.OrtsnamePos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsVerbundTextOrtschaftsVerbundText_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1Nachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationsNameBenannte',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.LinienobjektLinienobjekt_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjLiegenschaftProjLiegenschaft_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.TSEinteilung.Toleranzstufe',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.PLZ6Nachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanLayoutSymbolPlanLayoutSymbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.SelbstRechtSelbstRecht_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationsName',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.FlaechenelementFlaechenelement_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjSelbstRechtProjSelbstRecht_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.Flurname',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.HoheitsgrenzpunktPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsfixpunktPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.Hilfsfixpunkt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjGrundstueckPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanbeschriftungPlanbeschriftung_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.Einzelpunkt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.GEMNachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.LSNachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3PosHFP3Pos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.PLZ6',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Kantonsgrenzen.Kantonsgrenzabschnitt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.Gemeinde',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.LinienelementSymbolLinienelementSymbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.HONachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.Lokalisation',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.NKNachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.EinzelpunktPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenanschriftKoordinatenanschrift_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Einzelpunkt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.Bergwerk',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Punktelement',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Flaechenelement',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1Entstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.BenanntesGebiet',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3SymbolLFP3Symbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenanschriftPosKoordinatenanschriftPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bezirksgrenzen.Bezirksgrenzabschnitt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsfixpunktSymbolHilfsfixpunktSymbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.LinienelementSymbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.GelaendekanteEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.KoordinatenLinieKoordinatenLinie_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsfixpunktEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeNamePosGebaeudeNamePos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1Nachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.Aussparung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.PunktelementPunktelement_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.Linienelement',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.Objektname',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BoFlaecheSymbolBoFlaecheSymbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.TSEinteilung.ToleranzstufePosToleranzstufePos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.Gelaendename',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.OrtsnamePosOrtsnamePos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2Pos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.EinzelpunktPosEinzelpunktPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1PosLFP1Pos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1Pos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.SelbstRecht',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HFP3Pos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OSNachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.GebaeudenummerGebaeudenummer_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanLayout',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.GebaeudenummerPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.LeitungsobjektPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrundstueckEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.HilfsFPNachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnummerPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjGrundstueck',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.PlanPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.ProjGemeindegrenzeEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Landesgrenzen.Landesgrenzabschnitt',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.ObjektnamePos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.EinzelpunktPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Objektnummer',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3Entstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.SignalpunktPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BBNachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie3.LFP3Nachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.HoehenpunktEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Hoehen.HoehenpunktPosHoehenpunktPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.GrenzpunktEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.Gebaeudeeingang',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.ProjBoFlaecheSymbolProjBoFlaecheSymbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nomenklatur.FlurnamePosFlurnamePos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.NetzkreuzNetzkreuz_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsVerbund',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.GebaeudeNameGebaeudeName_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gemeindegrenzen.GemeindegrenzeGemeindegrenze_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.NummerierungsbereichPosNummerierungsbereichPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.FlaechenelementSymbolFlaechenelementSymbol_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.GebaeudenummerPosGebaeudenummerPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.LeitungsobjektEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planeinteilungen.PlangeometriePlangeometrie_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.EinzelpunktEntstehung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.PLZOrtschaft.OrtschaftsName_Pos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Bodenbedeckung.BoFlaecheSymbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.HFP2Nachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Rohrleitungen.RLNachfuehrung',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.ProjGrundstueckPosProjGrundstueckPos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.HFP1PosHFP1Pos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Gebaeudeadressen.LokalisationsNamePosLokalisationsNamePos_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Einzelobjekte.Flaechenelement',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.Nummerierungsbereich',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.BergwerkBergwerk_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Nummerierungsbereiche.NBGeometrie',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie2.LFP2Symbol',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Liegenschaften.LiegenschaftLiegenschaft_von',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.Planrahmen.PlanbeschriftungPos',NULL);
+INSERT INTO agi_dm01avso24.T_ILI2DB_INHERITANCE (thisClass,baseClass) VALUES ('DM01AVSO24LV95.FixpunkteKategorie1.LFP1',NULL);
 INSERT INTO agi_dm01avso24.T_ILI2DB_COLUMN_PROP (tablename,subtype,columnname,tag,setting) VALUES ('bodenbedeckung_projboflaeche',NULL,'geometrie','ch.ehi.ili2db.coordDimension','2');
 INSERT INTO agi_dm01avso24.T_ILI2DB_COLUMN_PROP (tablename,subtype,columnname,tag,setting) VALUES ('bodenbedeckung_projboflaeche',NULL,'geometrie','ch.ehi.ili2db.c1Max','2660000.000');
 INSERT INTO agi_dm01avso24.T_ILI2DB_COLUMN_PROP (tablename,subtype,columnname,tag,setting) VALUES ('bodenbedeckung_projboflaeche',NULL,'geometrie','ch.ehi.ili2db.c2Max','1270000.000');
@@ -5286,8 +5286,8 @@ INSERT INTO agi_dm01avso24.T_ILI2DB_COLUMN_PROP (tablename,subtype,columnname,ta
 INSERT INTO agi_dm01avso24.T_ILI2DB_COLUMN_PROP (tablename,subtype,columnname,tag,setting) VALUES ('gemeindegrenzen_gemeindegrenze',NULL,'entstehung','ch.ehi.ili2db.foreignKey','gemeindegrenzen_gemnachfuehrung');
 INSERT INTO agi_dm01avso24.T_ILI2DB_COLUMN_PROP (tablename,subtype,columnname,tag,setting) VALUES ('rohrleitungen_einzelpunktpos',NULL,'ori','ch.ehi.ili2db.unit','Grads');
 INSERT INTO agi_dm01avso24.T_ILI2DB_COLUMN_PROP (tablename,subtype,columnname,tag,setting) VALUES ('gebaeudeadressen_hausnummerpos',NULL,'hausnummerpos_von','ch.ehi.ili2db.foreignKey','gebaeudeadressen_gebaeudeeingang');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_hfp3pos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_gebnachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_hfp3pos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('tseinteilung_toleranzstufepos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planrahmen_planlayout','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie1_lfp1nachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
@@ -5302,8 +5302,8 @@ INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nomenklatur_gelaendenamepos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planrahmen_koordinatenlinie','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_lokalisationsnamepos','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('landesgrenzen_landesgrenzabschnitt','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_projselbstrecht','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('landesgrenzen_landesgrenzabschnitt','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planrahmen_planbeschriftungpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie2_hfp2pos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_bbnachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
@@ -5316,16 +5316,16 @@ INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('einzelobjekte_linienelementsymbol','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('plzortschaft_ortschaft','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_hilfsfixpunktsymbol','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_benanntesgebiet','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_lfp3nachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('plzortschaft_ortschaftsverbund','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_benanntesgebiet','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nomenklatur_ortsname','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('plzortschaft_ortschaftsverbund','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_gebaeudeeingang','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('einzelobjekte_flaechenelementsymbol','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('hoehen_honachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_bergwerk','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_hilfsfixpunktpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planrahmen_netzkreuz','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_hilfsfixpunktpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_grundstueck','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_grenzpunkt','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie1_lfp1symbol','ch.ehi.ili2db.tableKind','CLASS');
@@ -5335,19 +5335,19 @@ INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planrahmen_darstellungsflaeche','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nomenklatur_flurname','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nomenklatur_nknachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('hoehen_hoehenpunktpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_projliegenschaft','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('hoehen_hoehenpunktpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_lokalisationsname','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_hausnummerpos','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_projboflaeche','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nummerierngsbrche_nummerierungsbereich','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_projboflaeche','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie2_hfp2','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('plzortschaft_ortschaftsverbundtext','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('einzelobjekte_einzelpunktpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planrahmen_planlayoutsymbol','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('plzortschaft_ortschaftsverbundtext','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gemeindegrenzen_hoheitsgrenzpunkt','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_gebaeudenummer','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie2_lfp2nachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_gebaeudenummer','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('plzortschaft_ortschaftsname','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('rohrleitungen_signalpunkt','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_hfp3nachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
@@ -5357,18 +5357,18 @@ INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_grenzpunktpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_projgebaeudenummerpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('hoehen_gelaendekante','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_grundstueckpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_projgrundstueckpos','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planrahmen_koordinatenanschrift','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_grundstueckpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('kantonsgrenzen_kantonsgrenzabschnitt','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planrahmen_koordinatenanschrift','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_lokalisation','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('rohrleitungen_leitungsobjekt','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('tseinteilung_toleranzstufe','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_gebaeudenamepos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('liegenschaften_projgrundstueck','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_einzelpunkt','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planeinteilungen_plangeometrie','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nummerierngsbrche_nbgeometrie','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planeinteilungen_plangeometrie','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_strassenstueck','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_objektname','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie2_hfp2nachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
@@ -5393,8 +5393,8 @@ INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('rohrleitungen_rlnachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('rutschgebiete_rutschung','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gemeindegrenzen_hoheitsgrenzpunktsymbol','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie1_hfp1nachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('rohrleitungen_einzelpunktpos','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie1_hfp1nachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('rohrleitungen_linienelement','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('einzelobjekte_objektnummerpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie2_lfp2symbol','ch.ehi.ili2db.tableKind','CLASS');
@@ -5402,21 +5402,21 @@ INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_hilfsfpnachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('rohrleitungen_signalpunktpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_einzelpunktpos','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_lfp3symbol','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('planrahmen_koordinatenanschriftpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_hilfsfixpunkt','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_lfp3symbol','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie2_lfp2','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_gebaeudename','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nummerierngsbrche_nummerierungsbereichpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gemeindegrenzen_gemeinde','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nummerierngsbrche_nummerierungsbereichpos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('fixpunktekatgrie3_lfp3pos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gemeindegrenzen_gemnachfuehrung','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('rohrleitungen_einzelpunkt','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nomenklatur_gelaendename','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('einzelobjekte_objektname','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('bodenbedeckung_gebaeudenummerpos','ch.ehi.ili2db.tableKind','CLASS');
-INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nomenklatur_ortsnamepos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('einzelobjekte_objektnummer','ch.ehi.ili2db.tableKind','CLASS');
+INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('nomenklatur_ortsnamepos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gemeindegrenzen_projgemeindegrenze','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('plzortschaft_ortschaftsname_pos','ch.ehi.ili2db.tableKind','CLASS');
 INSERT INTO agi_dm01avso24.T_ILI2DB_TABLE_PROP (tablename,tag,setting) VALUES ('gebaeudeadressen_gebaeudebeschreibung','ch.ehi.ili2db.tableKind','CLASS');
@@ -7243,7 +7243,7 @@ CODE
   BLANK = DEFAULT, UNDEFINED = DEFAULT, CONTINUE = DEFAULT;
   TID = ANY;
 END.
-','2019-11-13 14:19:54.325');
+','2019-11-23 17:50:53.347');
 INSERT INTO agi_dm01avso24.T_ILI2DB_SETTINGS (tag,setting) VALUES ('ch.ehi.ili2db.createMetaInfo','True');
 INSERT INTO agi_dm01avso24.T_ILI2DB_SETTINGS (tag,setting) VALUES ('ch.ehi.ili2db.arrayTrafo','coalesce');
 INSERT INTO agi_dm01avso24.T_ILI2DB_SETTINGS (tag,setting) VALUES ('ch.ehi.ili2db.nameOptimization','topic');
@@ -7270,4 +7270,252 @@ INSERT INTO agi_dm01avso24.T_ILI2DB_SETTINGS (tag,setting) VALUES ('ch.ehi.ili2d
 INSERT INTO agi_dm01avso24.T_ILI2DB_SETTINGS (tag,setting) VALUES ('ch.ehi.ili2db.multiPointTrafo','coalesce');
 INSERT INTO agi_dm01avso24.T_ILI2DB_SETTINGS (tag,setting) VALUES ('ch.ehi.ili2db.multiSurfaceTrafo','coalesce');
 INSERT INTO agi_dm01avso24.T_ILI2DB_SETTINGS (tag,setting) VALUES ('ch.ehi.ili2db.multilingualTrafo','expand');
-COMMIT;
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_einzelobjekte_flaechenelement
+AS 
+SELECT
+    flaechenelement.t_id, 
+    einzelobjekt.qualitaet,
+    einzelobjekt.art,
+    einzelobjekt.entstehung,
+    flaechenelement.geometrie
+FROM
+    agi_dm01avso24.einzelobjekte_einzelobjekt AS einzelobjekt
+    RIGHT JOIN agi_dm01avso24.einzelobjekte_flaechenelement AS flaechenelement
+    ON flaechenelement.flaechenelement_von = einzelobjekt.t_id
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_einzelobjekte_linienlelement
+AS 
+SELECT
+    linienelement.t_id, 
+    einzelobjekt.qualitaet,
+    einzelobjekt.art,
+    einzelobjekt.entstehung,
+    linienelement.geometrie
+FROM
+    agi_dm01avso24.einzelobjekte_einzelobjekt AS einzelobjekt
+    RIGHT JOIN agi_dm01avso24.einzelobjekte_linienelement AS linienelement
+    ON linienelement.linienelement_von = einzelobjekt.t_id
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_einzelobjekte_punktelement
+AS 
+SELECT
+    punktelement.t_id, 
+    einzelobjekt.qualitaet,
+    einzelobjekt.art,
+    einzelobjekt.entstehung,
+    punktelement.geometrie
+FROM
+    agi_dm01avso24.einzelobjekte_einzelobjekt AS einzelobjekt
+    RIGHT JOIN agi_dm01avso24.einzelobjekte_punktelement AS punktelement
+    ON punktelement.punktelement_von = einzelobjekt.t_id
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_bodenbedeckung_boflaechesymbol
+AS 
+SELECT
+    symbol.t_id,
+    symbol.ori,
+    bb.art,
+    symbol.pos
+FROM
+    agi_dm01avso24.bodenbedeckung_boflaechesymbol AS symbol
+    LEFT JOIN agi_dm01avso24.bodenbedeckung_boflaeche AS bb
+    ON bb.t_id = boflaechesymbol_von
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_liegenschaften_grenzpunkt
+AS 
+SELECT
+    grenzpunkt.t_id,
+    grenzpunkt.geometrie,
+    grenzpunkt.punktzeichen,
+    nf.gueltigkeit
+FROM
+    agi_dm01avso24.liegenschaften_grenzpunkt AS grenzpunkt
+    LEFT JOIN agi_dm01avso24.liegenschaften_lsnachfuehrung AS nf 
+    ON grenzpunkt.entstehung = nf.t_id
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_gemeindegrenzen_gemeindegrenze
+AS 
+SELECT
+    gemeindegrenze.t_id,
+    gemeinde.aname AS aname,
+    gemeindegrenze.geometrie
+FROM
+    agi_dm01avso24.gemeindegrenzen_gemeindegrenze AS gemeindegrenze
+    LEFT JOIN agi_dm01avso24.gemeindegrenzen_gemeinde AS gemeinde 
+    ON gemeinde.t_id = gemeindegrenze.gemeindegrenze_von
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_gemeindegrenzen_hoheitsgrenzpunkt
+AS 
+SELECT
+    hoheitsgrenzpunkt.t_id,
+    hoheitsgrenzpunkt.geometrie,
+    hoheitsgrenzpunkt.punktzeichen,
+    nf.gueltigkeit
+    
+FROM
+    agi_dm01avso24.gemeindegrenzen_hoheitsgrenzpunkt AS hoheitsgrenzpunkt
+    LEFT JOIN agi_dm01avso24.gemeindegrenzen_gemnachfuehrung AS nf 
+    ON nf.t_id = hoheitsgrenzpunkt.entstehung
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_liegenschaften_grundstueckpos
+AS 
+SELECT
+    pos.t_id,
+    pos.hali,
+    pos.vali,
+    pos.ori,
+    pos.pos,
+    grundstueck.gueltigkeit,
+    grundstueck.nummer,
+    grundstueck.art
+FROM
+    agi_dm01avso24.liegenschaften_grundstueck AS grundstueck
+    LEFT JOIN agi_dm01avso24.liegenschaften_grundstueckpos AS pos 
+    ON grundstueck.t_id = pos.grundstueckpos_von
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_liegenschaften_projgrundstueckpos
+AS 
+SELECT
+    pos.t_id,
+    pos.hali,
+    pos.vali,
+    pos.ori,
+    pos.pos,
+    grundstueck.gueltigkeit,
+    grundstueck.nummer,
+    grundstueck.art
+FROM
+    agi_dm01avso24.liegenschaften_projgrundstueck AS grundstueck
+    LEFT JOIN agi_dm01avso24.liegenschaften_projgrundstueckpos AS pos 
+    ON grundstueck.t_id = pos.projgrundstueckpos_von
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_gebaeudeadressen_lokalisationsnamepos
+AS 
+SELECT
+    pos.t_id,
+    pos.hali,
+    pos.vali,
+    pos.ori,
+    pos.pos,
+    aname.atext
+FROM
+    agi_dm01avso24.gebaeudeadressen_lokalisationsnamepos AS pos 
+    LEFT JOIN agi_dm01avso24.gebaeudeadressen_lokalisationsname AS aname
+    ON aname.t_id = pos.lokalisationsnamepos_von
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_gebaeudeadressen_hausnummerpos
+AS 
+SELECT
+    pos.t_id,
+    pos.hali,
+    pos.vali,
+    pos.ori,
+    pos.pos,
+    eingang.hausnummer,
+    eingang.astatus
+FROM
+    agi_dm01avso24.gebaeudeadressen_gebaeudeeingang AS eingang
+    RIGHT JOIN agi_dm01avso24.gebaeudeadressen_hausnummerpos AS pos
+    ON eingang.t_id = pos.hausnummerpos_von
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_nomenklatur_flurnamepos
+AS 
+SELECT
+    pos.t_id,
+    pos.hali,
+    pos.vali,
+    pos.ori,
+    pos.pos,
+    flurname.aname
+FROM
+    agi_dm01avso24.nomenklatur_flurnamepos AS pos
+    LEFT JOIN agi_dm01avso24.nomenklatur_flurname AS flurname
+    ON pos.flurnamepos_von = flurname.t_id
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_nomenklatur_gelaendenamepos
+AS 
+SELECT
+    pos.t_id,
+    pos.hali,
+    pos.vali,
+    pos.ori,
+    pos.pos,
+    gelaendename.aname
+FROM
+    agi_dm01avso24.nomenklatur_gelaendenamepos AS pos
+    LEFT JOIN agi_dm01avso24.nomenklatur_gelaendename AS gelaendename
+    ON pos.gelaendenamepos_von = gelaendename.t_id
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_nomenklatur_ortsnamepos
+AS 
+SELECT
+    pos.t_id,
+    pos.hali,
+    pos.vali,
+    pos.ori,
+    pos.pos,
+    ortsname.aname
+FROM
+    agi_dm01avso24.nomenklatur_ortsnamepos AS pos
+    LEFT JOIN agi_dm01avso24.nomenklatur_ortsname AS ortsname
+    ON pos.ortsnamepos_von = ortsname.t_id
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_bodenbedeckung_objektnamepos
+AS 
+SELECT
+    pos.t_id,
+    pos.hali,
+    pos.vali,
+    pos.ori,
+    pos.pos,
+    objektname.aname
+FROM
+    agi_dm01avso24.bodenbedeckung_objektnamepos AS pos
+    LEFT JOIN agi_dm01avso24.bodenbedeckung_objektname AS objektname
+    ON pos.objektnamepos_von = objektname.t_id
+;
+
+CREATE OR REPLACE VIEW 
+    agi_dm01avso24.vw_rohrleitungen_leitungsobjektpos
+AS 
+SELECT
+    pos.t_id,
+    pos.hali,
+    pos.vali,
+    pos.ori,
+    pos.pos,
+    leitungsobjekt.betreiber
+FROM
+    agi_dm01avso24.rohrleitungen_leitungsobjektpos AS pos
+    LEFT JOIN agi_dm01avso24.rohrleitungen_leitungsobjekt AS leitungsobjekt
+    ON pos.leitungsobjektpos_von = leitungsobjekt.t_id
+;COMMIT;
