@@ -12,3 +12,5 @@ RUN localedef -c -i de_CH -f UTF-8 de_CH.UTF-8
 COPY pgconf/* /pgconf/
 
 USER 26
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=60s CMD pg_isready
