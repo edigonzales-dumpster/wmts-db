@@ -13,4 +13,4 @@ COPY pgconf/* /pgconf/
 
 USER 26
 
-HEALTHCHECK --interval=30s --timeout=30s --start-period=60s CMD /usr/pgsql-11/bin/pg_isready -h localhost -p 5432
+HEALTHCHECK --interval=30s --timeout=5s --start-period=60s CMD /usr/pgsql-11/bin/pg_isready -h localhost -p 5432
