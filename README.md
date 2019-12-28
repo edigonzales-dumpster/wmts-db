@@ -42,7 +42,7 @@ sogis/wmts-db:latest
 
 This places the PostgreSQL data under /tmp/primary. If you want to keep the data longer than just until you log out, run instead e.g.:
 ```
-mkdir --mode=0777 ~/pgdata-wmts
+mkdir -m 0777 ~/pgdata-wmts
 docker run --rm --name wmts-db -p 54321:5432 --hostname primary \
 -e PG_DATABASE=wmts -e PG_LOCALE=de_CH.UTF-8 -e PG_PRIMARY_PORT=5432 -e PG_MODE=primary \
 -e PG_USER=admin -e PG_PASSWORD=admin \
@@ -50,7 +50,7 @@ docker run --rm --name wmts-db -p 54321:5432 --hostname primary \
 -e PG_ROOT_PASSWORD=secret \
 -e PG_WRITE_USER=gretl -e PG_WRITE_PASSWORD=gretl \
 -e PG_READ_USER=ogc_server -e PG_READ_PASSWORD=ogc_server \
--v ~/pgdata-wmts:/pgdata \
+-v ~/pgdata-wmts:/pgdata:delegated \
 sogis/wmts-db:latest
 ```
 
