@@ -32,5 +32,6 @@ jobs:
       - name: Publish Docker images
         if: success() && github.ref == 'refs/heads/master'
         run: |
+          echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
           docker push $DOCKER_ACCOUNT/$DOCKER_REPO:latest 
           docker push $DOCKER_ACCOUNT/$DOCKER_REPO:1.0.$BUILD_NUMBER
