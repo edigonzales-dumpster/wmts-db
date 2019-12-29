@@ -1,8 +1,7 @@
-# wmts-db
 [![Build Status](https://github.com/edigonzales/wmts-db/workflows/CI/CD/badge.svg)](https://github.com/edigonzales/wmts-db/workflows/CI/CD/badge.svg)
 [![Docker Pulls](https://img.shields.io/docker/pulls/sogis/wmts-db.svg)](https://hub.docker.com/r/sogis/wmts-db)
 
-
+# wmts-db
 Docker image providing a PostGIS database for sogis WMTS.
 
 ## Building and testing the image
