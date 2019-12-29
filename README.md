@@ -1,5 +1,5 @@
 # wmts-db
-[![Build Status](https://travis-ci.org/edigonzales/wmts-db.svg?branch=master)](https://travis-ci.org/edigonzales/wmts-db)
+[![Build Status](https://github.com/edigonzales/wmts-db/workflows/CI/CD/badge.svg)](https://github.com/edigonzales/wmts-db/workflows/CI/CD/badge.svg)
 [![Docker Pulls](https://img.shields.io/docker/pulls/sogis/wmts-db.svg)](https://hub.docker.com/r/sogis/wmts-db)
 
 
